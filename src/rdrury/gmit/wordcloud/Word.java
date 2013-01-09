@@ -8,12 +8,13 @@ public class Word {
 	public Word()
 	{
 		word = "";
-		frequency = 0;
+		frequency = -1;
 	}
 	
 	public Word(String word)
 	{
 		this.word = word;
+		frequency = -1;
 	}
 	
 	public Word(String word, int frequency)
@@ -66,5 +67,10 @@ public class Word {
 		int result = 1;
 		result = prime * result + ((word == null) ? 0 : word.hashCode());
 		return result;
+	}
+	
+	void incrementWordCount()
+	{
+		frequency++;
 	}
 }

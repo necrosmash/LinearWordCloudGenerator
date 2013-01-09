@@ -7,7 +7,8 @@ public class TestRunner {
 	 */
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-
+		WordCollectorFromFile wcff = new WordCollectorFromFile();
+		wcff.getWordsFromFile("processMe.txt");
 	}
 
 }
