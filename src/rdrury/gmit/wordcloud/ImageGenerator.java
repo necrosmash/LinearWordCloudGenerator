@@ -9,8 +9,8 @@ public class ImageGenerator {
 		this.wordCollector = wordCollector;
 	}
 	
-	public void setWordCollector(WordCollector wordCollector)
+	public void generateImage()
 	{
-		this.wordCollector = wordCollector;
+		
 	}
 }
