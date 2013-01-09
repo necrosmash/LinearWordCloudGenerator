@@ -12,6 +12,7 @@ public abstract class WordCollector {
 	//File fStopWords;
 	List<Word> lStopWords;
 	List<Word> lFoundWords;
+	int testCtr;
 	
 	public WordCollector()
 	{
@@ -20,11 +21,11 @@ public abstract class WordCollector {
 		loadStopWords("stopwords.txt");
 	}
 
-	public WordCollector(String filename)
+	public WordCollector(String stopwordsFileName)
 	{
 		System.out.println("WordCollector String constructor");
 		instantiateWordLists();
-		loadStopWords(filename);
+		loadStopWords(stopwordsFileName);
 	}
 	
 	private void instantiateWordLists()
@@ -32,6 +33,7 @@ public abstract class WordCollector {
 		System.out.println("WordCollector instantiateWordLists");
 		lStopWords = new LinkedList<Word>();
 		lFoundWords = new LinkedList<Word>();
+		testCtr = 0;
 	}
 	
 	private void loadStopWords(String filename)
@@ -73,7 +75,23 @@ public abstract class WordCollector {
 	void addFoundWord(String foundWord)
 	{
 		System.out.println("WordCollector addFoundWord");
-		lFoundWords.add(new Word(foundWord));
+		
+		if (getStopWords().contains(new Word(foundWord)))
+		{
+			System.out.println("not including common word: " + foundWord);
+		}
+		
+		else if (getFoundWords().contains(new Word(foundWord)))
+		{
+			System.out.println("found duplicate word: " + foundWord);
+			incrementWordCount(new Word(foundWord));
+		}
+		
+		else
+		{
+			System.out.println("word added: " + foundWord);
+			lFoundWords.add(new Word(foundWord));
+		}
 	}
 	
 	void incrementWordCount(Word w)

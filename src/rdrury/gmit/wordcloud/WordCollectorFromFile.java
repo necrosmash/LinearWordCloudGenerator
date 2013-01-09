@@ -14,9 +14,9 @@ public class WordCollectorFromFile extends WordCollector {
 		System.out.println("WordCollectorFromFile default constructor");
 	}
 	
-	public WordCollectorFromFile(String filename)
+	public WordCollectorFromFile(String stopwordsFileName)
 	{
-		super(filename);
+		super(stopwordsFileName);
 		System.out.println("WordCollectorFromFile String constructor");
 	}
 	
@@ -36,24 +36,7 @@ public class WordCollectorFromFile extends WordCollector {
 			BufferedReader br = new BufferedReader(new FileReader(filename));
 			
 			while ((currentWord = br.readLine()) != null)
-			{
-				if (super.getStopWords().contains(new Word(currentWord)))
-				{
-					System.out.println("not including common word: " + currentWord);
-				}
-				
-				else if (super.getFoundWords().contains(new Word(currentWord)))
-				{
-					System.out.println("found duplicate word: " + currentWord);
-					super.incrementWordCount(new Word(currentWord));
-				}
-				
-				else
-				{
-					System.out.println("word added: " + currentWord);
-					super.addFoundWord(currentWord);
-				}
-			}
+				super.addFoundWord(currentWord);
 			
 			if (br != null)
 				br.close();
