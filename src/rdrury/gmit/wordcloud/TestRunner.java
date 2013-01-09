@@ -50,5 +50,9 @@ public class TestRunner {
 			System.out.println("Word: " + w.getWord());
 			System.out.println("Frequency: " + w.getFrequency());
 		}
+		
+		String s = new String(" ");
+		if (s.equals(" "))
+			System.out.println("true");
 	}
 }

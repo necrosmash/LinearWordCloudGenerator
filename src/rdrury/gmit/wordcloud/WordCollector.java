@@ -88,7 +88,13 @@ public abstract class WordCollector {
 			incrementWordCount(new Word(foundWord));
 		}
 		
-		else
+		//else if (foundWord.equals(" "))
+			//System.out.println("OMGOMGOMG");
+		
+		//else if (foundWord.equals(""))
+			//System.out.println("OMG: [" + foundWord + "]");
+		
+		else if ((!foundWord.equals(" ")) && (!foundWord.equals("")))
 		{
 			System.out.println("word added: " + foundWord);
 			lFoundWords.add(new Word(foundWord));
