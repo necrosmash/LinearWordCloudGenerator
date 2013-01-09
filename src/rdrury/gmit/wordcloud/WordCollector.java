@@ -9,10 +9,8 @@ import java.util.List;
 
 public abstract class WordCollector {
 	
-	//File fStopWords;
 	List<Word> lStopWords;
 	List<Word> lFoundWords;
-	int testCtr;
 	
 	public WordCollector()
 	{
@@ -33,7 +31,6 @@ public abstract class WordCollector {
 		System.out.println("WordCollector instantiateWordLists");
 		lStopWords = new LinkedList<Word>();
 		lFoundWords = new LinkedList<Word>();
-		testCtr = 0;
 	}
 	
 	private void loadStopWords(String filename)
