@@ -1,5 +1,6 @@
 package rdrury.gmit.wordcloud;
 
+import java.net.UnknownHostException;
 import java.util.Collections;
 import java.util.LinkedList;
 import java.util.List;
@@ -31,7 +32,12 @@ public class TestRunner {
 		
 		// Make a WordCollectorFromURL
 		WordCollectorFromURL wcfu = new WordCollectorFromURL();
-		wcfu.getWordsFromURL("http://news.bbc.co.uk");
+		
+		try {
+			wcfu.getWordsFromURL("http://google.ie");
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 		
 		// Print the words and their frequency
 		List<Word> l2 = new LinkedList<Word>();

@@ -68,11 +68,6 @@ public class Word implements Comparable<Object>{
 		result = prime * result + ((word == null) ? 0 : word.hashCode());
 		return result;
 	}
-	
-	void incrementWordCount()
-	{
-		frequency++;
-	}
 
 	@Override
 	public int compareTo(Object arg0) {
@@ -81,5 +76,10 @@ public class Word implements Comparable<Object>{
 		
 		//return this.frequency - w.getFrequency();
 		return w.getFrequency() - this.frequency;
+	}
+	
+	void incrementWordCount()
+	{
+		frequency++;
 	}
 }
