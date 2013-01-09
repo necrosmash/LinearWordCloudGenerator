@@ -12,13 +12,13 @@ public class TestRunner {
 	public static void main(String[] args) {
 
 		// Make a WordCollectorFromFile
-		WordCollectorFromFile wcff = new WordCollectorFromFile();
-		wcff.getWordsFromFile("processMe.txt");
+		//WordCollectorFromFile wcff = new WordCollectorFromFile();
+		//wcff.getWordsFromFile("processMe.txt");
 		
 		
 		// Print the words and their frequency
-		List<Word> l1 = new LinkedList<Word>();
-		l1 = wcff.getFoundWords();
+		//List<Word> l1 = new LinkedList<Word>();
+		//l1 = wcff.getFoundWords();
 		
 		/*
 		for (Word w : l1)
@@ -38,14 +38,11 @@ public class TestRunner {
 		l2 = wcfu.getFoundWords();
 		Collections.sort(l2);
 		
-		
 		for (Word w : l2)
 		{
 			System.out.println("** NEW WORD **");
 			System.out.println("Word: " + w.getWord());
 			System.out.println("Frequency: " + w.getFrequency());
 		}
-		
-		// Set the 
 	}
 }

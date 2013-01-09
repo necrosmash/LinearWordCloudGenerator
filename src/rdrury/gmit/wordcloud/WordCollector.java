@@ -43,7 +43,7 @@ public abstract class WordCollector {
 			
 			while ((currentLine = br.readLine()) != null)
 			{
-				lStopWords.add(new Word(currentLine));
+				lStopWords.add(new Word(currentLine.toUpperCase()));
 			}
 			
 			if (br != null)
@@ -77,7 +77,7 @@ public abstract class WordCollector {
 		//foundWord = foundWord.replaceAll("([a-z]+)[?:!.,;]*", "$1");
 		foundWord = foundWord.replaceAll("\\W", "");
 		
-		if (getStopWords().contains(new Word(foundWord)))
+		if (getStopWords().contains(new Word(foundWord.toUpperCase())))
 		{
 			System.out.println("not including common word: " + foundWord);
 		}

@@ -79,6 +79,7 @@ public class Word implements Comparable<Object>{
 		
 		Word w = (Word) arg0;
 		
-		return this.frequency - w.getFrequency();
+		//return this.frequency - w.getFrequency();
+		return w.getFrequency() - this.frequency;
 	}
 }
