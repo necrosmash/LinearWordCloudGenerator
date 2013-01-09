@@ -73,7 +73,7 @@ public abstract class WordCollector {
 	void addFoundWord(String foundWord)
 	{
 		System.out.println("WordCollector addFoundWord");
-		lFoundWords.add(new Word(foundWord, 1));
+		lFoundWords.add(new Word(foundWord));
 	}
 	
 	void incrementWordCount(Word w)

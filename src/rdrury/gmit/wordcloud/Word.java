@@ -14,7 +14,7 @@ public class Word {
 	public Word(String word)
 	{
 		this.word = word;
-		frequency = -1;
+		frequency = 1;
 	}
 	
 	public Word(String word, int frequency)
