@@ -76,8 +76,9 @@ public abstract class WordCollector {
 		//foundWord = foundWord.replaceAll("(\\w+)\\p{Punct}(\\s|$)", "$1$2");
 		//foundWord = foundWord.replaceAll("([a-z]+)[?:!.,;]*", "$1");
 		foundWord = foundWord.replaceAll("\\W", "");
+		foundWord = foundWord.toUpperCase();
 		
-		if (getStopWords().contains(new Word(foundWord.toUpperCase())))
+		if (getStopWords().contains(new Word(foundWord)))
 		{
 			System.out.println("not including common word: " + foundWord);
 		}

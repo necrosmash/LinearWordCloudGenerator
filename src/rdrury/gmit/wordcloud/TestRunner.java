@@ -34,7 +34,7 @@ public class TestRunner {
 		WordCollectorFromURL wcfu = new WordCollectorFromURL();
 		
 		try {
-			wcfu.getWordsFromURL("http://google.ie");
+			wcfu.getWordsFromURL("http://news.bbc.co.uk");
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -50,9 +50,5 @@ public class TestRunner {
 			System.out.println("Word: " + w.getWord());
 			System.out.println("Frequency: " + w.getFrequency());
 		}
-		
-		String s = new String(" ");
-		if (s.equals(" "))
-			System.out.println("true");
 	}
 }
