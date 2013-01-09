@@ -1,6 +1,6 @@
 package rdrury.gmit.wordcloud;
 
-public class Word {
+public class Word implements Comparable<Object>{
 	
 	private String word;
 	private int frequency;
@@ -72,5 +72,13 @@ public class Word {
 	void incrementWordCount()
 	{
 		frequency++;
+	}
+
+	@Override
+	public int compareTo(Object arg0) {
+		
+		Word w = (Word) arg0;
+		
+		return this.frequency - w.getFrequency();
 	}
 }
