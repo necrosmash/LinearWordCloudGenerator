@@ -6,6 +6,8 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.regex.Pattern;
+import java.util.regex.PatternSyntaxException;
 
 public abstract class WordCollector {
 	
@@ -73,9 +75,20 @@ public abstract class WordCollector {
 	{
 		System.out.println("WordCollector addFoundWord");
 		
-		//foundWord = foundWord.replaceAll("(\\w+)\\p{Punct}(\\s|$)", "$1$2");
-		//foundWord = foundWord.replaceAll("([a-z]+)[?:!.,;]*", "$1");
+		//Remove all non-punctuation characters
 		foundWord = foundWord.replaceAll("\\W", "");
+		//foundWord = foundWord.replaceAll("\\d", "");
+		
+		// Remove all non-punctuation characters, except apostrophes
+		//foundWord = foundWord.replaceAll("^'&&\\W", "");
+		//foundWord = foundWord.replaceAll("\\W&&^'", "");
+		
+		// Remove all punctuation marks from the BEGINNING of the string
+		//foundWord = foundWord.replaceAll("^\\p{Punct}", "");
+		
+		// Remove all digits
+		//foundWord = foundWord.replaceAll("\\d", "");
+		
 		foundWord = foundWord.toUpperCase();
 		
 		if (getStopWords().contains(new Word(foundWord)))

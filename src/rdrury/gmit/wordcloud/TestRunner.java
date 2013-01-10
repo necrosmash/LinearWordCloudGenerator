@@ -16,31 +16,33 @@ public class TestRunner {
 	 * @param args
 	 */
 	public static void main(String[] args) {
-
+		
+		
 		// Make a WordCollectorFromFile
-		//WordCollectorFromFile wcff = new WordCollectorFromFile();
-		//wcff.getWordsFromFile("processMe.txt");
+		WordCollectorFromFile wcff = new WordCollectorFromFile();
+		wcff.getWordsFromFile("processMe.txt");
 		
 		
 		// Print the words and their frequency
-		//List<Word> l1 = new LinkedList<Word>();
-		//l1 = wcff.getFoundWords();
+		List<Word> l1 = new LinkedList<Word>();
+		l1 = wcff.getFoundWords();
 		
-		/*
+		
 		for (Word w : l1)
 		{
 			System.out.println("** NEW WORD **");
 			System.out.println("Word: " + w.getWord());
 			System.out.println("Frequency: " + w.getFrequency());
 		}
-		*/
+		
 		
 		// Make a WordCollectorFromURL
+		
 		/*
 		WordCollectorFromURL wcfu = new WordCollectorFromURL();
 		
 		try {
-			wcfu.getWordsFromURL("http://docs.oracle.com/javase/tutorial/extra/fullscreen/exclusivemode.html");
+			wcfu.getWordsFromURL("http://news.bbc.co.uk");
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -58,7 +60,7 @@ public class TestRunner {
 		}
 		*/
 		
-		
+		/*
 		Font font = new Font(Font.SANS_SERIF, Font.BOLD, 62);
 		BufferedImage image = new BufferedImage(669, 78, BufferedImage.TYPE_4BYTE_ABGR);
 		Graphics graphics = image.getGraphics();
@@ -79,6 +81,7 @@ public class TestRunner {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+		*/
 		
 		/*
 		graphics.setColor(Color.red);
