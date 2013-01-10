@@ -17,12 +17,14 @@ public class TestRunner {
 	 */
 	public static void main(String[] args) {
 		
-		
 		// Make a WordCollectorFromFile
 		WordCollectorFromFile wcff = new WordCollectorFromFile();
 		wcff.getWordsFromFile("processMe.txt");
 		
+		ImageGenerator ig = new ImageGenerator(wcff);
+		ig.generateImage();
 		
+		/*
 		// Print the words and their frequency
 		List<Word> l1 = new LinkedList<Word>();
 		l1 = wcff.getFoundWords();
@@ -34,7 +36,7 @@ public class TestRunner {
 			System.out.println("Word: " + w.getWord());
 			System.out.println("Frequency: " + w.getFrequency());
 		}
-		
+		*/
 		
 		// Make a WordCollectorFromURL
 		
