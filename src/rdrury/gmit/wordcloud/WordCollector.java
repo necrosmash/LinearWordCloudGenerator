@@ -76,7 +76,7 @@ public abstract class WordCollector {
 		System.out.println("WordCollector addFoundWord");
 		
 		//Remove all non-punctuation characters
-		foundWord = foundWord.replaceAll("\\W", "");
+		//foundWord = foundWord.replaceAll("\\W", "");
 		//foundWord = foundWord.replaceAll("\\d", "");
 		
 		// Remove all non-punctuation characters, except apostrophes
