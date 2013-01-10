@@ -7,8 +7,9 @@ import java.io.IOException;
 import java.util.Collections;
 import java.util.LinkedList;
 import java.util.List;
-import java.util.regex.Pattern;
-import java.util.regex.PatternSyntaxException;
+
+//import java.util.regex.Pattern;
+//import java.util.regex.PatternSyntaxException;
 
 public abstract class WordCollector {
 	
@@ -53,10 +54,8 @@ public abstract class WordCollector {
 				br.close();
 			
 		} catch (FileNotFoundException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}
@@ -81,14 +80,6 @@ public abstract class WordCollector {
 		
 		//Remove all non-punctuation characters
 		//foundWord = foundWord.replaceAll("\\W", "");
-		//foundWord = foundWord.replaceAll("\\d", "");
-		
-		// Remove all non-punctuation characters, except apostrophes
-		//foundWord = foundWord.replaceAll("^'&&\\W", "");
-		//foundWord = foundWord.replaceAll("\\W&&^'", "");
-		
-		// Remove all punctuation marks from the BEGINNING of the string
-		//foundWord = foundWord.replaceAll("^\\p{Punct}", "");
 		
 		// Remove all digits
 		//foundWord = foundWord.replaceAll("\\d", "");
@@ -105,12 +96,6 @@ public abstract class WordCollector {
 			System.out.println("found duplicate word: " + foundWord);
 			incrementWordCount(new Word(foundWord));
 		}
-		
-		//else if (foundWord.equals(" "))
-			//System.out.println("OMGOMGOMG");
-		
-		//else if (foundWord.equals(""))
-			//System.out.println("OMG: [" + foundWord + "]");
 		
 		else if ((!foundWord.equals(" ")) && (!foundWord.equals("")))
 		{

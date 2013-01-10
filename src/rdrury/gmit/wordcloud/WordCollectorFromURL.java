@@ -35,7 +35,6 @@ public class WordCollectorFromURL extends WordCollector {
 		try {
 			doc = Jsoup.connect(URL).get();
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		
