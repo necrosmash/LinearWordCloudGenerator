@@ -4,6 +4,7 @@ import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
+import java.util.Collections;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.regex.Pattern;
@@ -11,8 +12,8 @@ import java.util.regex.PatternSyntaxException;
 
 public abstract class WordCollector {
 	
-	List<Word> lStopWords;
-	List<Word> lFoundWords;
+	private List<Word> lStopWords;
+	private List<Word> lFoundWords;
 	
 	public WordCollector()
 	{
@@ -62,6 +63,9 @@ public abstract class WordCollector {
 
 	List<Word> getFoundWords() {
 		System.out.println("WordCollector getFoundWords");
+		
+		// Sort words by their frequency
+		Collections.sort(lFoundWords);
 		return lFoundWords;
 	}
 	

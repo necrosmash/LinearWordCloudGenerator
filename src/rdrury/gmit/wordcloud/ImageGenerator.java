@@ -4,6 +4,8 @@ import java.awt.Color;
 import java.awt.Font;
 import java.awt.FontMetrics;
 import java.awt.Graphics;
+import java.awt.Graphics2D;
+import java.awt.RenderingHints;
 import java.awt.geom.Rectangle2D;
 import java.awt.image.BufferedImage;
 import java.io.File;
@@ -18,7 +20,7 @@ import javax.imageio.ImageIO;
 public class ImageGenerator {
 	
 	WordCollector wordCollector;
-	BufferedImage disposableImage;
+	BufferedImage image;
 	
 	public ImageGenerator(WordCollector wordCollector)
 	{
@@ -27,8 +29,9 @@ public class ImageGenerator {
 	
 	public void generateImage(int numberOfWords, int maxFontSize)
 	{
-		disposableImage = new BufferedImage(1, 1, BufferedImage.TYPE_4BYTE_ABGR);
-		Graphics graphics = disposableImage.getGraphics();
+		image = new BufferedImage(1000, 3000, BufferedImage.TYPE_4BYTE_ABGR);
+		Graphics graphics = image.getGraphics();
+		graphics.setColor(Color.BLACK);
 		//graphics.
 		FontMetrics currentFontMetrics;
 		Font currentFont;
@@ -108,14 +111,42 @@ public class ImageGenerator {
 		graphics.dispose();
 		
 		try {
-			ImageIO.write(disposableImage, "png", new File("image.png"));
+			ImageIO.write(image, "png", new File("image.png"));
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-			
+		/*
+		BufferedImage resizedImage = resizeImage(image, wordMapWidth, wordMapHeight);
+		System.out.println("||| resizedImage width: " + resizedImage.getWidth());
+		System.out.println("||| resizedImage height: " + resizedImage.getHeight());
+		
+		try {
+			ImageIO.write(resizedImage, "png", new File("image.png"));
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		*/
 	}
 	
+	private BufferedImage resizeImage(BufferedImage img, int newWidth, int newHeight)
+	{
+		int currentW = img.getWidth();
+		int currentH = img.getHeight();
+		
+		BufferedImage newImage =  new BufferedImage(newWidth, newHeight, img.getType());
+		
+		Graphics g = newImage.createGraphics();
+		((Graphics2D) g).setRenderingHint(RenderingHints.KEY_INTERPOLATION, RenderingHints.VALUE_INTERPOLATION_BILINEAR);
+		
+		g.drawImage(img, 0, 0, newWidth, newHeight, 0, 0, currentW, currentH, null);
+		
+		g.dispose();
+		
+		return newImage;
+	}
+
 	private int determineFontSize(Word currentWord, int maxFontSize)
 	{
 		//disposableImage
