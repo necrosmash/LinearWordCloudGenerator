@@ -20,10 +20,10 @@ public class ImageGenerator {
 		this.wordCollector = wordCollector;
 	}
 	
-	public void generateImage()
+	public void generateImage(int numberOfWords)
 	{
 		Font font = new Font(Font.SANS_SERIF, Font.BOLD, 62);
-		BufferedImage image = new BufferedImage(669, 78, BufferedImage.TYPE_4BYTE_ABGR);
+		BufferedImage image = new BufferedImage(2000, 2000, BufferedImage.TYPE_4BYTE_ABGR);
 		Graphics graphics = image.getGraphics();
 		
 		FontMetrics fm = graphics.getFontMetrics(font);
@@ -33,8 +33,20 @@ public class ImageGenerator {
 		
 		graphics.setColor(Color.red);
 		graphics.setFont(font);
-		graphics.drawString("Object oriented design", 0, 68);
 		
+		int y = 500;
+		
+		graphics.drawString("Object oriented design", 0, y);
+		graphics.drawString("Height: " + r.getHeight(), 0, y+100);
+		graphics.drawString("Width: " + r.getWidth(), 0, y+200);
+		
+		/*
+		for (Word w : wordCollector.getFoundWords())
+		{
+			graphics.drawString(w.getWord(), 0, y);
+			y+=100;
+		}
+		*/
 		graphics.dispose();
 		try {
 			ImageIO.write(image, "png", new File("image.png"));
