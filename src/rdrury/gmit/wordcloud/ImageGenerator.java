@@ -8,25 +8,64 @@ import java.awt.geom.Rectangle2D;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
+import java.io.ObjectInputStream.GetField;
+import java.util.Iterator;
+import java.util.LinkedList;
+import java.util.List;
 
 import javax.imageio.ImageIO;
 
 public class ImageGenerator {
 	
 	WordCollector wordCollector;
+	BufferedImage disposableImage;
 	
 	public ImageGenerator(WordCollector wordCollector)
 	{
 		this.wordCollector = wordCollector;
 	}
 	
-	public void generateImage(int numberOfWords)
+	public void generateImage(int numberOfWords, int maxFontSize)
 	{
-		//int longestString = 0;
-		//int 
+		disposableImage = new BufferedImage(1, 1, BufferedImage.TYPE_4BYTE_ABGR);
+		Graphics graphics = disposableImage.getGraphics();
+		FontMetrics currentFontMetrics;
+		Font currentFont;
+		Rectangle2D currentWordRec;
+		int wordMapWidth = 0;
+		int currentWordFontSize = 0;
+		int wordMapHeight = 0;
+		int wordCounter = 0;
+		Word currentWord;
 		
-		Font font = new Font(Font.SANS_SERIF, Font.BOLD, 62);
+		Iterator<Word> iterator = getWords().iterator();
+		
+		while (iterator.hasNext() && wordCounter < numberOfWords)
+		{
+			currentWord = iterator.next();
+			currentWordFontSize = determineFontSize(currentWord, maxFontSize);
+			currentFont = new Font(Font.SANS_SERIF, Font.BOLD, currentWordFontSize);
+			currentFontMetrics = graphics.getFontMetrics(currentFont);
+			currentWordRec = currentFontMetrics.getStringBounds(currentWord.getWord(), graphics);
+			
+			wordMapHeight += currentWordRec.getHeight();
+			System.out.println("||| New wordMapHeight: " + wordMapHeight);
+			
+			if (wordMapWidth < currentWordRec.getWidth())
+			{
+				wordMapWidth = (int) currentWordRec.getWidth();
+				System.out.println("||| New wordMapWidth: " + wordMapWidth);
+			}
+			
+			wordCounter++;
+		}
+		
+		/*
+		//Font font = new Font(Font.SANS_SERIF, Font.BOLD, 62);
+		Font font = new Font(Font.SANS_SERIF, Font.BOLD, 100);
 		BufferedImage image = new BufferedImage(2000, 2000, BufferedImage.TYPE_4BYTE_ABGR);
+		//BufferedImage image = new BufferedImage(1, 1, BufferedImage.TYPE_4BYTE_ABGR);
+		
 		Graphics graphics = image.getGraphics();
 		
 		FontMetrics fm = graphics.getFontMetrics(font);
@@ -37,11 +76,14 @@ public class ImageGenerator {
 		graphics.setColor(Color.red);
 		graphics.setFont(font);
 		
-		int y = 500;
 		
-		graphics.drawString("Object oriented design", 0, y);
-		graphics.drawString("Height: " + r.getHeight(), 0, y+100);
-		graphics.drawString("Width: " + r.getWidth(), 0, y+200);
+		graphics.drawString("Object oriented design", 0, 100);
+		*/
+		//int y = 500;
+		
+		//graphics.drawString("Object oriented design", 0, y);
+		//graphics.drawString("Height: " + r.getHeight(), 0, y+100);
+		//graphics.drawString("Width: " + r.getWidth(), 0, y+200);
 		
 		/*
 		for (Word w : wordCollector.getFoundWords())
@@ -50,12 +92,30 @@ public class ImageGenerator {
 			y+=100;
 		}
 		*/
-		graphics.dispose();
+		
+		//graphics.dispose();
+		/*
 		try {
 			ImageIO.write(image, "png", new File("image.png"));
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+		*/
+	}
+	
+	private int determineFontSize(Word currentWord, int maxFontSize)
+	{
+		//disposableImage
+		if ((currentWord.getFrequency() * 10) > maxFontSize)
+			return maxFontSize;
+		
+		else
+			return currentWord.getFrequency() * 10;
+	}
+
+	public List<Word> getWords()
+	{
+		return wordCollector.getFoundWords();
 	}
 }

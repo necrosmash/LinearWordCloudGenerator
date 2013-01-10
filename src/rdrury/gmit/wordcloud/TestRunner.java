@@ -31,7 +31,7 @@ public class TestRunner {
 		
 		ImageGenerator ig = new ImageGenerator(wcfu);
 		//ImageGenerator ig = new ImageGenerator(wcff);
-		ig.generateImage(5);
+		ig.generateImage(5, 100);
 		
 		/*
 		// Print the words and their frequency
