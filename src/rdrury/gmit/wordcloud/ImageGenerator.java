@@ -22,6 +22,9 @@ public class ImageGenerator {
 	
 	public void generateImage(int numberOfWords)
 	{
+		//int longestString = 0;
+		//int 
+		
 		Font font = new Font(Font.SANS_SERIF, Font.BOLD, 62);
 		BufferedImage image = new BufferedImage(2000, 2000, BufferedImage.TYPE_4BYTE_ABGR);
 		Graphics graphics = image.getGraphics();
