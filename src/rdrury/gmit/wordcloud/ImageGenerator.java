@@ -27,7 +27,7 @@ public class ImageGenerator {
 	
 	public void generateImage(int numberOfWords, int maxFontSize)
 	{
-		disposableImage = new BufferedImage(1, 1, BufferedImage.TYPE_4BYTE_ABGR);
+		disposableImage = new BufferedImage(2000, 2000, BufferedImage.TYPE_4BYTE_ABGR);
 		Graphics graphics = disposableImage.getGraphics();
 		FontMetrics currentFontMetrics;
 		Font currentFont;
@@ -43,9 +43,19 @@ public class ImageGenerator {
 		while (iterator.hasNext() && wordCounter < numberOfWords)
 		{
 			currentWord = iterator.next();
+			
+			System.out.println("||| CURRENT WORD: " + currentWord.getWord());
+			System.out.println("||| FREQUENCY: " + currentWord.getFrequency());
+			
 			currentWordFontSize = determineFontSize(currentWord, maxFontSize);
+			System.out.println("||| currentWordFontSize: " + currentWordFontSize);
+			
 			currentFont = new Font(Font.SANS_SERIF, Font.BOLD, currentWordFontSize);
+			graphics.setFont(currentFont);
+			
 			currentFontMetrics = graphics.getFontMetrics(currentFont);
+			//graphics = disposableImage.getGraphics();
+			
 			currentWordRec = currentFontMetrics.getStringBounds(currentWord.getWord(), graphics);
 			
 			wordMapHeight += currentWordRec.getHeight();
@@ -57,6 +67,7 @@ public class ImageGenerator {
 				System.out.println("||| New wordMapWidth: " + wordMapWidth);
 			}
 			
+			graphics.drawString(currentWord.getWord(), 0, wordMapHeight);
 			wordCounter++;
 		}
 		
@@ -93,25 +104,31 @@ public class ImageGenerator {
 		}
 		*/
 		
-		//graphics.dispose();
-		/*
+		graphics.dispose();
+		
 		try {
-			ImageIO.write(image, "png", new File("image.png"));
+			ImageIO.write(disposableImage, "png", new File("image.png"));
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		*/
+			
 	}
 	
 	private int determineFontSize(Word currentWord, int maxFontSize)
 	{
 		//disposableImage
 		if ((currentWord.getFrequency() * 10) > maxFontSize)
+		{
+			System.out.println("||| RETURNING MAX FONT SIZE: " + maxFontSize);
 			return maxFontSize;
+		}
 		
 		else
+		{
+			System.out.println("||| RETURNING CALCULATED FONT SIZE: " + currentWord.getFrequency() * 10);
 			return currentWord.getFrequency() * 10;
+		}
 	}
 
 	public List<Word> getWords()

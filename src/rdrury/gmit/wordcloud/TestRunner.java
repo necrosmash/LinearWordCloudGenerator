@@ -18,20 +18,23 @@ public class TestRunner {
 	public static void main(String[] args) {
 		
 		// Make a WordCollectorFromFile
-		//WordCollectorFromFile wcff = new WordCollectorFromFile();
-		//wcff.getWordsFromFile("processMe.txt");
+		WordCollectorFromFile wcff = new WordCollectorFromFile();
+		wcff.getWordsFromFile("processMe.txt");
 		
-		WordCollectorFromURL wcfu = new WordCollectorFromURL();
-		
+		//WordCollectorFromURL wcfu = new WordCollectorFromURL();
+		/*
 		try {
 			wcfu.getWordsFromURL("http://news.bbc.co.uk");
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
+		*/
 		
-		ImageGenerator ig = new ImageGenerator(wcfu);
-		//ImageGenerator ig = new ImageGenerator(wcff);
+		
+		//ImageGenerator ig = new ImageGenerator(wcfu);
+		ImageGenerator ig = new ImageGenerator(wcff);
 		ig.generateImage(5, 100);
+		
 		
 		/*
 		// Print the words and their frequency
