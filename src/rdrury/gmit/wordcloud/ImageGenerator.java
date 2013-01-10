@@ -27,8 +27,9 @@ public class ImageGenerator {
 	
 	public void generateImage(int numberOfWords, int maxFontSize)
 	{
-		disposableImage = new BufferedImage(2000, 2000, BufferedImage.TYPE_4BYTE_ABGR);
+		disposableImage = new BufferedImage(1, 1, BufferedImage.TYPE_4BYTE_ABGR);
 		Graphics graphics = disposableImage.getGraphics();
+		//graphics.
 		FontMetrics currentFontMetrics;
 		Font currentFont;
 		Rectangle2D currentWordRec;
