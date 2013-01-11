@@ -4,10 +4,7 @@ public class TestRunner {
 	
 	String URL = "http://news.bbc.co.uk";
 	String textFile = "processMe.txt";
-	
-	/**
-	 * @param args
-	 */
+
 	public static void main(String[] args) {
 		
 		makeImageFromURL();

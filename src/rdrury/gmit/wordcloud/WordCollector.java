@@ -11,18 +11,34 @@ import java.util.List;
 //import java.util.regex.Pattern;
 //import java.util.regex.PatternSyntaxException;
 
+/**
+ * Abstract superclass used for classes that read
+ * words from different sources 
+ * 
+ * @author Rob Drury
+ */
 public abstract class WordCollector {
 	
 	private List<Word> lStopWords;
 	private List<Word> lFoundWords;
 	
+	/**
+	 * Default constructor uses "stopwords.txt" as the
+	 * location of the words to ignore when reading lists of words.
+	 */
 	public WordCollector()
 	{
 		System.out.println("WordCollector default constructor");
 		instantiateWordLists();
 		loadStopWords("stopwords.txt");
 	}
-
+	
+	/**
+	 * Constructor that is passed the filename containing a list
+	 * of words that should be ignored when analysing lists of words.
+	 * 
+	 * @param stopwordsFileName
+	 */
 	public WordCollector(String stopwordsFileName)
 	{
 		System.out.println("WordCollector String constructor");
@@ -59,7 +75,13 @@ public abstract class WordCollector {
 			e.printStackTrace();
 		}
 	}
-
+	
+	/**
+	 * Returns a (sorted) list of the words
+	 * that have currently been found.
+	 * 
+	 * @return List<Word>
+	 */
 	List<Word> getFoundWords() {
 		System.out.println("WordCollector getFoundWords");
 		
@@ -68,12 +90,27 @@ public abstract class WordCollector {
 		return lFoundWords;
 	}
 	
+	/**
+	 * Returns a list of the words that
+	 * are ignored when analysing lists of words.
+	 * 
+	 * @return List<Word>
+	 */
 	List<Word> getStopWords()
 	{
 		System.out.println("WordCollector getStopWords");
 		return lStopWords;
 	}
 	
+	/**
+	 * Adds a found word to the list of found words if
+	 * it is not a common word, null, or a single space.
+	 * 
+	 * It also increments the count of the word if the
+	 * word passed in already exists in the list.
+	 * 
+	 * @param foundWord
+	 */
 	void addFoundWord(String foundWord)
 	{
 		System.out.println("WordCollector addFoundWord");
@@ -104,6 +141,12 @@ public abstract class WordCollector {
 		}
 	}
 	
+	/**
+	 * Increments the count of the
+	 * passed word.
+	 * 
+	 * @param w
+	 */
 	void incrementWordCount(Word w)
 	{
 		System.out.println("WordCollector incrementWordCount");

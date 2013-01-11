@@ -13,16 +13,34 @@ import java.util.List;
 
 import javax.imageio.ImageIO;
 
+/**
+ * Used to create images from instances of WordCollection.
+ * 
+ * @author Rob Drury
+ */
 public class ImageGenerator {
 	
 	WordCollector wordCollector;
 	BufferedImage image;
 	
+	/**
+	 * Default constructor receives a WordCollector
+	 * 
+	 * @param wordCollector
+	 */
 	public ImageGenerator(WordCollector wordCollector)
 	{
 		this.wordCollector = wordCollector;
 	}
 	
+	/**
+	 * Generates an image and writes it to "image.png"
+	 * Received parameters for determining how the image should be drawn
+	 * 
+	 * @param numberOfWords	The number of words that should be processed
+	 * @param maxFontSize	The maximum font size that should be allowed
+	 * @param sizeMultiplier	The number by which words should have their frequency multiplied in order to determine their font size
+	 */
 	public void generateImage(int numberOfWords, int maxFontSize, int sizeMultiplier)
 	{
 		image = new BufferedImage(1000, 3000, BufferedImage.TYPE_4BYTE_ABGR);
@@ -116,7 +134,12 @@ public class ImageGenerator {
 			return currentWord.getFrequency() * sizeMultiplier;
 		}
 	}
-
+	
+	/**
+	 * Returns a list of the words that have been found so far
+	 * 
+	 * @return List<Word>
+	 */
 	public List<Word> getWords()
 	{
 		return wordCollector.getFoundWords();

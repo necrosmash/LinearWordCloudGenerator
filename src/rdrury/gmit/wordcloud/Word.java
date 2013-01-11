@@ -1,33 +1,67 @@
 package rdrury.gmit.wordcloud;
 
+/**
+ * Contains a String representing a word, as well as
+ * how often it appears.
+ * 
+ * @author Rob Drury
+ */
 public class Word implements Comparable<Object>{
 	
 	private String word;
 	private int frequency;
 	
+	/**
+	 * Default constructor sets the String to nothing,
+	 * and the frequency to -1.
+	 */
 	public Word()
 	{
 		word = "";
 		frequency = -1;
 	}
 	
+	/**
+	 * Constructor with a String passed in. This String
+	 * is used to form a new Word. The frequency is set
+	 * to 1 by default here.
+	 * 
+	 * @param word
+	 */
 	public Word(String word)
 	{
 		this.word = word;
 		frequency = 1;
 	}
 	
+	/**
+	 * Constructor with a String and an integer for
+	 * specifying a word and how often it appears.
+	 * 
+	 * @param word
+	 * @param frequency
+	 */
 	public Word(String word, int frequency)
 	{
 		this.word = word;
 		this.frequency = frequency;
 	}
 	
+	/**
+	 * Returns a string that represents a Word (its actual word).
+	 * 
+	 * @return String
+	 */
 	public String getWord()
 	{
 		return this.word;
 	}
 	
+	/**
+	 * Returns the frequency that a word appears.
+	 * 
+	 * @return int
+	 */
 	public int getFrequency()
 	{
 		return this.frequency;
@@ -77,6 +111,9 @@ public class Word implements Comparable<Object>{
 		return w.getFrequency() - this.frequency;
 	}
 	
+	/**
+	 * Increments the frequency of a Word.
+	 */
 	void incrementWordCount()
 	{
 		frequency++;
